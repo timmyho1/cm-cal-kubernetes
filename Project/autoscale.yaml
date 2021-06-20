@@ -1,0 +1,13 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nginx-autoscale
+  labels:
+    app: nginx
+spec:
+  minReplicas: 3
+  maxReplicas: 10
+  scaleTargetRef:
+    kind: CrossVersionObjectReference
+    name: nginx
+  targetCPUUtilizationPercentage: 80
